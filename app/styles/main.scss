@@ -1,0 +1,59 @@
+@import "susy";
+
+$total-columns  : 7;
+$column-width   : 4em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+$break          : 12;
+
+@mixin flex-span-columns($columns, $context: $total-columns, $padding: false, $from: $from-direction, $style: fix-static-misalignment()){
+  @include span-columns($columns, $context, $padding, $from, $style);
+  flex: 0 0 columns($columns);
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+body {
+  @include container($total-columns, $break);
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  
+  @include at-breakpoint($break){
+    display: flex;
+    flex-direction: row;
+
+    &.multiple-rows {
+      flex-wrap: wrap;
+    }
+  }
+
+  li {
+    padding: 0 1em;
+    background: #9b59b6;
+    color: #fff;
+    margin-bottom: 1em;
+    @include at-breakpoint($break){
+      @include flex-span-columns(4);
+    }
+    &:nth-child(3n){
+      @include omega;
+    }
+    &.large {
+      @include at-breakpoint($break){
+        @include flex-span-columns(8);
+      }
+    }
+  }
+
+  &.multiple-rows li {
+    background: #c0392b;
+  }
+}
