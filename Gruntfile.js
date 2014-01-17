@@ -380,7 +380,6 @@ module.exports = function (grunt) {
         'autoprefixer',
         'concat',
         'cssmin',
-        'uglify',
         'copy:dist',
         'rev',
         'usemin',
