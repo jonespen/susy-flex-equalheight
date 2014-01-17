@@ -382,8 +382,7 @@ module.exports = function (grunt) {
         'cssmin',
         'copy:dist',
         'rev',
-        'usemin',
-        'htmlmin'
+        'usemin'
     ]);
 
     grunt.registerTask('default', [
