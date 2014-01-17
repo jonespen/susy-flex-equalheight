@@ -42,15 +42,14 @@ ul {
     margin-bottom: 1em;
     @include at-breakpoint($break){
       @include flex-span-columns(4);
-    }
-    &:nth-child(3n){
-      @include omega;
-    }
-    &.large {
-      @include at-breakpoint($break){
+      &:nth-child(3n){
+        @include omega;
+      }
+      &.large {
         @include flex-span-columns(8);
       }
     }
+    
   }
 
   &.multiple-rows li {
