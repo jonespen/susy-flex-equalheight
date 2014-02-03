@@ -15,6 +15,20 @@ $break          : 12;
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
+.cf:before,
+.cf:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+  *zoom: 1;
+}
+
 body {
   @include container($total-columns, $break);
   background: #fafafa;
@@ -23,6 +37,7 @@ body {
 }
 
 ul {
+  @extend .cf;
   list-style: none;
   padding: 0;
   
@@ -32,6 +47,11 @@ ul {
 
     &.multiple-rows {
       flex-wrap: wrap;
+      @supports not (flex-wrap: wrap) {
+        & {
+          display: block;
+        }
+      }
     }
   }
 
